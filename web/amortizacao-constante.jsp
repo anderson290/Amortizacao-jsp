@@ -10,8 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP - Amortização Constante</title>
+        <link rel='stylesheet' type='text/css' href='css/bootstrap.css'/>
+        <%@include file="WEB-INF/jspf/head.jspf" %>
     </head>
     <body>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
         <form method="get">
             <div class="form-group">
                 <label>Valor: </label>
@@ -73,4 +77,7 @@
             </table>
         <% } %> 
     </body>
+    <footer>
+        <%@include file="WEB-INF/jspf/footer.jspf" %>
+    </footer>
 </html>
