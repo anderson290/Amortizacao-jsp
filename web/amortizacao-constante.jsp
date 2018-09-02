@@ -4,6 +4,7 @@
     Author     : usuario
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,8 @@
         </form>
         <%
             if (request.getParameter("calcular") != null && request.getParameter("valor") != "" && request.getParameter("tempo") != "" && request.getParameter("juros") != null){
+                DecimalFormat decimalFormat = new DecimalFormat();
+                decimalFormat.setMaximumFractionDigits(2);
                 
                 double valor = Double.parseDouble(request.getParameter("valor")); 
                 double taxa = Double.parseDouble(request.getParameter("juros"))/100;
@@ -51,18 +54,18 @@
                     <tr>
                         <% if (i == tempo+1) { %>
                                 <th class="table-active" scope="row"><%= "=" %></th>
-                                <td class="table-active"><%= parcelasAcu %></td>
-                                <td class="table-active"><%= amortizacaoAcu %></td>
-                                <td class="table-active"><%= jurosAcu %></td>
+                                <td class="table-active"><%= decimalFormat.format(parcelasAcu) %></td>
+                                <td class="table-active"><%= decimalFormat.format(amortizacaoAcu) %></td>
+                                <td class="table-active"><%= decimalFormat.format(jurosAcu) %></td>
                                 <td class="table-active"><%= "Total" %></td>
                         <% } else {%>
                             <th scope="row"><%= i %></th>
                             <td><% juros = saldoDevedor * taxa;
-                                        parcelas = amortizacao + juros;
-                                        parcelasAcu += parcelas;%> <%= parcelas %></td>
-                            <td><%= amortizacao%> <% amortizacaoAcu += amortizacao; %></td>
-                            <td><%= juros %> <% jurosAcu += juros; %></td>
-                            <td><% saldoDevedor -= amortizacao;%> <%= saldoDevedor %></td>
+                                parcelas = amortizacao + juros;
+                                parcelasAcu += parcelas;%> <%= decimalFormat.format(parcelas)%></td>
+                            <td><%= decimalFormat.format(amortizacao)%> <% amortizacaoAcu += amortizacao;%></td>
+                            <td><%= decimalFormat.format(juros)%> <% jurosAcu += juros; %></td>
+                            <td><% saldoDevedor -= amortizacao;%> <%= decimalFormat.format(saldoDevedor)%></td>
                         <% } %>
                     </tr>
                     <% } %>
