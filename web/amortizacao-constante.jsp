@@ -26,5 +26,30 @@
             </div>
             <input class="btn btn-primary" type="submit" value="Calcular" name="calcular"/>
         </form>
+        <%
+            if (request.getParameter("calcular") != null && request.getParameter("valor") != "" && request.getParameter("tempo") != "" && request.getParameter("juros") != null){
+                
+                double valor = Double.parseDouble(request.getParameter("valor")); 
+                double taxa = Double.parseDouble(request.getParameter("juros"))/100;
+                double tempo = Double.parseDouble(request.getParameter("tempo"));
+                double amortizacao = valor/tempo;
+                double parcelas, juros;
+                double saldoDevedor = valor, jurosAcu = 0, amortizacaoAcu = 0, parcelasAcu = 0;   
+        %>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Parcelas</th>
+                    <th scope="col">Amortizações</th>
+                    <th scope="col">Juros</th>
+                    <th scope="col">Saldo Devedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        <% } %> 
     </body>
 </html>
