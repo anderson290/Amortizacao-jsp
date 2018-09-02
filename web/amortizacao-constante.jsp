@@ -47,7 +47,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <% for (int i = 1; i <= tempo + 1; i++) {%>
+                    <tr>
+                        <th scope="row"><%= i %></th>
+                        <td><% juros = saldoDevedor * taxa;
+                                    parcelas = amortizacao + juros;
+                                    parcelasAcu += parcelas;%> <%= parcelas %></td>
+                        <td><%= amortizacao%> <% amortizacaoAcu += amortizacao; %></td>
+                        <td><%= juros %> <% jurosAcu += juros; %></td>
+                        <td><% saldoDevedor -= amortizacao;%> <%= saldoDevedor %></td>
+                    </tr>
+                    <% } %>
                 </tbody>
             </table>
         <% } %> 
