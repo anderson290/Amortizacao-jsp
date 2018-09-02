@@ -10,21 +10,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tabela Price</title>
+        <link rel='stylesheet' type='text/css' href='css/bootstrap.css'/>
+        <%@include file="WEB-INF/jspf/head.jspf" %>
     </head>
     <body>
-        <h1>Tabela Price</h1>
-        
+        <%@include file="WEB-INF/jspf/menu.jspf" %>        
         <form method="GET">
-            <label for="pv">PV:</label>
-            <input type="text" name="pv"/>            
+            <div class="form-group">
+                <label for="pv">PV:</label>
+                <input type="text" name="pv"/>            
+            </div>
+            <div class="form-group">
+                <label for="taxa">Taxa:</label>
+                <input type="text" name="taxa"/>            
+            </div>
             
-            <label for="taxa">Taxa:</label>
-            <input type="text" name="taxa"/>            
-            
-            <label for="periodos">Períodos:</label>
-            <input type="text" name="periodos"/>
-            
-            <input type="submit" value="Gerar"/>
+            <div class="form-group">
+                <label for="periodos">Períodos:</label>
+                <input type="text" name="periodos"/>
+            </div>
+            <<input class="btn btn-primary" type="submit" value="Gerar"/>
             
         </form>
             <%
