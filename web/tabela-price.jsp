@@ -9,9 +9,54 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Tabela Price</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Tabela Price</h1>
+        
+        <form method="GET">
+            <label for="pv">PV:</label>
+            <input type="text" name="pv"/>            
+            
+            <label for="taxa">Taxa:</label>
+            <input type="text" name="taxa"/>            
+            
+            <label for="periodos">Períodos:</label>
+            <input type="text" name="periodos"/>
+            
+            <input type="submit" value="Gerar"/>
+            
+        </form>
+            <%
+              double pv = Double.parseDouble(request.getParameter("pv"));
+
+              double taxa = Double.parseDouble(request.getParameter("taxa"));
+
+              double n = Double.parseDouble(request.getParameter("periodos"));          
+              %>
+        <table border="1">
+            <thead>
+                
+                <tr>
+                    <th>Períodos</th>
+                    <th>Saldo devedor(Pv)</th>
+                    <th>Parcela</th>
+                    <th>Juros</th>
+                    <th>Amortização</th>
+                </tr>
+                
+            </thead>
+            
+            <tbody>
+                <%
+                    for(int i=0;i<=n;i++){
+                        double pmt = (1*pv)/taxa*n;
+                %>
+            </tbody>
+        </table>
+        <%}%>
+       
+        
+        
     </body>
 </html>
