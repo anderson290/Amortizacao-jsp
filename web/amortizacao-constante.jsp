@@ -49,13 +49,21 @@
                 <tbody>
                     <% for (int i = 1; i <= tempo + 1; i++) {%>
                     <tr>
-                        <th scope="row"><%= i %></th>
-                        <td><% juros = saldoDevedor * taxa;
-                                    parcelas = amortizacao + juros;
-                                    parcelasAcu += parcelas;%> <%= parcelas %></td>
-                        <td><%= amortizacao%> <% amortizacaoAcu += amortizacao; %></td>
-                        <td><%= juros %> <% jurosAcu += juros; %></td>
-                        <td><% saldoDevedor -= amortizacao;%> <%= saldoDevedor %></td>
+                        <% if (i == tempo+1) { %>
+                                <th class="table-active" scope="row"><%= "=" %></th>
+                                <td class="table-active"><%= parcelasAcu %></td>
+                                <td class="table-active"><%= amortizacaoAcu %></td>
+                                <td class="table-active"><%= jurosAcu %></td>
+                                <td class="table-active"><%= "Total" %></td>
+                        <% } else {%>
+                            <th scope="row"><%= i %></th>
+                            <td><% juros = saldoDevedor * taxa;
+                                        parcelas = amortizacao + juros;
+                                        parcelasAcu += parcelas;%> <%= parcelas %></td>
+                            <td><%= amortizacao%> <% amortizacaoAcu += amortizacao; %></td>
+                            <td><%= juros %> <% jurosAcu += juros; %></td>
+                            <td><% saldoDevedor -= amortizacao;%> <%= saldoDevedor %></td>
+                        <% } %>
                     </tr>
                     <% } %>
                 </tbody>
