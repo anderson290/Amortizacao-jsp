@@ -40,7 +40,7 @@
                 double p = Double.parseDouble(request.getParameter("tempo"));
                 double amortizacao = sd;
                 double parcelas, juros;
-                double saldoDevedor = sd, jurosAcu = 0, amortizacaoAcu = 0, parcelasAcu = 0;   
+                double saldoDevedor = sd, jurosA = 0, parcelasAcu = 0;   
         %>
             <table class="table">
                 <thead class="thead-light">
@@ -63,19 +63,19 @@
                                 <td class="table-active"><%= decimalFormat.format(juros) %></td>
                                 <td class="table-active"><%= decimalFormat.format(sd + juros) %></td>
                                 <td class="table-active"><%= "Total" %></td>
-                        <% } else {%>
+                        <% } else if(i < p) {%>
                             <th scope="row"><%= i %></th>
-                            <td><%
-                                juros = saldoDevedor * tj; parcelas = juros;
-                                parcA += parcelas;%> <%= decimalFormat.format(parcelas)%></td>
-                            <td><%=%></td>
-                            <td><%= decimalFormat.format(juros)%> <% jurosAcu += juros; %></td>
-                            <td><<%= decimalFormat.format(saldoDevedor)%></td>
-                        <% } else if(i == p+1){ %>
-                            <th class="table-active" scope="row"><%= "=" %></th>
-                                <td class="table-active"><%= decimalFormat.format(parcA) %></td>
-                                <td class="table-active"><%= decimalFormat.format(amortizacaoAcu) %></td>
-                                <td class="table-active"><%= decimalFormat.format(jurosAcu) %></td>
+                            <td><%= decimalFormat.format(saldoDevedor)%></td>
+                            <td><% juros = saldoDevedor * tj ; parcelas = juros; parcA += parcelas; %> 
+                                <%= "--" %></td>
+                            <td><%= decimalFormat.format(juros)%> <% jurosA += juros; %></td>
+                            <td><%= decimalFormat.format(parcelas)%></td>
+                        <% } else if(i == p+1 ){ %>
+                            <th class="table-active" scope="row">  <%= "=" %></th>
+                                <td class="table-active"><%= decimalFormat.format(sd-sd) %></td>
+                                <td class="table-active"><%= decimalFormat.format(amortizacao) %></td>
+                                <td class="table-active"><%= decimalFormat.format(jurosA) %></td>
+                                <td class="table-active"><%= decimalFormat.format(sd+juros) %></td>
                                 <td class="table-active"><%= "Total" %></td>
                         %>
                     </tr>
