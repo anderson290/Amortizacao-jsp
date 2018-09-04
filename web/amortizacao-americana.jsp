@@ -29,60 +29,69 @@
                 <label>Tempo: </label>
                 <input type="text" class="form-control" name="tempo" placeholder="Meses">
             </div>
-            <input class="btn btn-primary" type="submit" value="Calcular" name="calcular"/>
-        </form>
+            <center> <input class="btn btn-primary" type="submit" value="Calcular" name="calcular"/></center>
+        </form><br>
         <%
-            if (request.getParameter("calcular") != null && request.getParameter("valor") != "" && request.getParameter("tempo") != "" && request.getParameter("juros") != null){
+            if (request.getParameter("calcular") != null && request.getParameter("valor") != "" && request.getParameter("tempo")
+                    != "" && request.getParameter("juros") != null){
                 DecimalFormat decimalFormat = new DecimalFormat();
                 decimalFormat.setMaximumFractionDigits(2);
                 double sd = Double.parseDouble(request.getParameter("valor")); 
                 double tj = Double.parseDouble(request.getParameter("juros"))/100;
                 double p = Double.parseDouble(request.getParameter("tempo"));
                 double amortizacao = sd;
-                double parcelas, juros;
-                double saldoDevedor = sd, jurosA = 0, parcelasAcu = 0;   
+                double parcelas=0, juros =0 ;
+                double saldoDevedor = sd, jurosA = 0, parcA = 0;   
         %>
+        
             <table class="table">
                 <thead class="thead-light">
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Saldo Devedor</th>
-                    <th scope="col">Amortizações</th>
-                    <th scope="col">Juros</th>
-                    <th scope="col">Parcelas</th>
-                   
-                    </tr>
+                    <th>Tempo</th>
+                    <th>Saldo Devedor</th>
+                    <th>Amortização</th>
+                    <th>Juros</th>
+                    <th>Parcelas</th>
+                   </tr>
                 </thead>
+                
                 <tbody>
+                    
                     <% for (int i = 1; i <= p+1; i++) {%>
                     <tr>
-                        <% if (i == p) { %>
-                                <th class="table-active" scope="row"><%= "=" %></th>
-                                <td class="table-active"><%= decimalFormat.format(sd - sd) %></td>
-                                <td class="table-active"><%= decimalFormat.format(sd) %></td>
-                                <td class="table-active"><%= decimalFormat.format(juros) %></td>
-                                <td class="table-active"><%= decimalFormat.format(sd + juros) %></td>
-                                <td class="table-active"><%= "Total" %></td>
-                        <% } else if(i < p) {%>
-                            <th scope="row"><%= i %></th>
+                        <% if (i < p) { %>
+                        
+                            <td><%= i %></td>
                             <td><%= decimalFormat.format(saldoDevedor)%></td>
-                            <td><% juros = saldoDevedor * tj ; parcelas = juros; parcA += parcelas; %> 
-                                <%= "--" %></td>
-                            <td><%= decimalFormat.format(juros)%> <% jurosA += juros; %></td>
-                            <td><%= decimalFormat.format(parcelas)%></td>
-                        <% } else if(i == p+1 ){ %>
-                            <th class="table-active" scope="row">  <%= "=" %></th>
-                                <td class="table-active"><%= decimalFormat.format(sd-sd) %></td>
-                                <td class="table-active"><%= decimalFormat.format(amortizacao) %></td>
-                                <td class="table-active"><%= decimalFormat.format(jurosA) %></td>
-                                <td class="table-active"><%= decimalFormat.format(sd+juros) %></td>
-                                <td class="table-active"><%= "Total" %></td>
-                        %>
-                    </tr>
-                    <% } %>
+                            <td>   <%= "  -- " %></td>
+                           <td> <% juros = saldoDevedor * tj ; parcelas = juros;
+                             jurosA = jurosA+juros; %><%= decimalFormat.format(juros)%></td>
+                            <td> <%parcA = parcA+ parcelas;%><%= decimalFormat.format(parcelas)%></td>
+                       
+                        <% } else if(i == p) {%>
+                         
+                                <td><%= i %></td>
+                                <td><%= decimalFormat.format(sd - sd) %></td>
+                                <td><%= decimalFormat.format(sd) %></td>
+                                <td><%= decimalFormat.format(juros) %></td>
+                                <%parcA = parcA+ parcelas;%>
+                                <%jurosA = jurosA+juros;%>
+                                <td><%= decimalFormat.format(sd + juros) %></td>
+                        
+                        <% }  else if(i == p+1 ){ %>
+                        
+                                <td><%= "Total" %></td>
+                                <td><%= "  -- "%></td>
+                                <td><%= decimalFormat.format(amortizacao) %></td>
+                                <td><%= decimalFormat.format(jurosA) %></td>
+                                <td><%= decimalFormat.format(amortizacao+parcA) %></td>
+                       
+                   <% } %>
+                         </tr>
                 </tbody>
-            </table>
-        <% } %> 
+            
+        <% } %> </table>
+    <% } %>
     </body>
     <footer>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
