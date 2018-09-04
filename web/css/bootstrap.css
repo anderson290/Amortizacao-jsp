@@ -12,7 +12,19 @@
     border: solid #f7f7f9;
     border-width: .2rem 0 0;
 }
-
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #6c757d;
+    color: white;
+    text-align: center;
+}
+a{
+     color: white;
+     text-align: center;
+}
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
