@@ -15,24 +15,36 @@
         <%@include file="WEB-INF/jspf/head.jspf" %>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/menu.jspf" %>        
-        <form method="GET">
-            <div class="form-group">
-                <label for="pv">PV:</label>
-                <input type="text" name="pv"/>            
-            </div>
-            <div class="form-group">
-                <label for="taxa">Taxa:</label>
-                <input type="text" name="taxa"/>            
-            </div>
-            
-            <div class="form-group">
-                <label for="periodos">Períodos:</label>
-                <input type="text" name="periodos"/>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Gerar"/>
-            
-        </form>
+        <%@include file="WEB-INF/jspf/menu.jspf" %>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center my-5">
+                  <h1 class="display-3">Tabela Price</h1>           
+                </div>
+              </div>
+            <div class="row">
+                <div class="col-6 my-3">
+                 <h2>Preencha o Formulário</h2>
+                <form method="GET">
+                    <div class="form-group">
+                        <label for="pv">PV:</label>
+                        <input class="form-control" type="text" name="pv"/>            
+                    </div>
+                    <div class="form-group">
+                        <label for="taxa">Taxa:</label>
+                        <input class="form-control" type="text" name="taxa"/>            
+                    </div>
+
+                    <div class="form-group">
+                        <label for="periodos">Períodos:</label>
+                        <input class="form-control" type="text" name="periodos"/>
+                    </div>
+                    <input class="btn btn-primary mb-4" type="submit" value="Gerar"/>
+
+                </form>
+        </div>
+        <div class="col-6 my-3">
+            <h2>Tabela Resultado</h2>
             <%
              if ((request.getParameter("pv") != null)&&(request.getParameter("taxa") != null)&&(request.getParameter("periodos") != null)){
               double pv = Double.parseDouble(request.getParameter("pv"));
@@ -115,7 +127,9 @@
 <% }       %>
             </tbody>
         </table>
-        
-        
+        </div>
+            </div>
+        </div>
+        <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>

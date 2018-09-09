@@ -1,14 +1,10 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<footer class="footer text-center bg-light my-5 navbar-light pb-5">
-    <div class="col-4">
-        <ul class="navbar-nav mr-auto">
-              <h3>Integrantes</h3>
-              <li><a href="#" class="nav-link">Anderson do Carmo Nunes</a></li>
-              <li><a href="#" class="nav-link">Bruno de Lima</a></li>
-              <li><a href="#" class="nav-link">Nicole Medina</a></li>
+<footer class="footer text-center bg-light mt-5 navbar-light pb-5 pt-5">
+    
+        <ul class="navbar-nav mr-auto">          
+              <li><a href="#" class="nav-link">© 2018 Grupo 3 - Anderson do Carmo, Bruno de Lima e Nicole Medina.</a></li>           
 
-        </ul>
-    </div>    
+        </ul>     
     
 </footer>

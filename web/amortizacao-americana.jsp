@@ -16,7 +16,8 @@
     </head>
     <body>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
-        <form method="get">
+        <div class="col-6">
+        <form method="get" class="my-3">
             <div class="form-group">
                 <label>Saldo Devedor: </label>
                 <input type="text" class="form-control" name="valor" placeholder="R$">
@@ -29,8 +30,10 @@
                 <label>Tempo: </label>
                 <input type="text" class="form-control" name="tempo" placeholder="Meses">
             </div>
-            <center> <input class="btn btn-primary" type="submit" value="Calcular" name="calcular"/></center>
-        </form><br>
+            <center> <input class="btn btn-primary mb-4" type="submit" value="Calcular" name="calcular"/></center>
+        </form>
+        </div>
+        <div class="col-6" style="display: inline;">
         <%
             if (request.getParameter("calcular") != null && request.getParameter("valor") != "" && request.getParameter("tempo")
                     != "" && request.getParameter("juros") != null){
@@ -92,8 +95,8 @@
             
         <% } %> </table>
     <% } %>
-    </body>
-    <footer>
+        </div>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
-    </footer>
+    </body>
+   
 </html>
