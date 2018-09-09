@@ -1,0 +1,32 @@
+footer{
+    background-color: #F2F2F2;
+}
+footer a{
+    color: #606060;
+    text-decoration: none;
+}
+footer a:hover{
+    color: #b9bbbe;
+    text-decoration: none;
+}
+.botaoForm{
+    color:black;
+    border:1px solid black;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.5s;
+    float:right;
+}
+.botaoForm:hover{
+    color:white;
+    background-color: #606060;    
+    
+}
+.table{
+    background-color: #b9bbbe;
+    color:white;
+}
+.legenda{
+    background-color: #5a6268;
+    color:white;
+}

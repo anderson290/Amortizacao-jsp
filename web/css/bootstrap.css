@@ -151,7 +151,19 @@ dd {
 blockquote {
   margin: 0 0 1rem;
 }
-
+.botaoForm{
+    color:black;
+    border:1px solid black;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: background-color 2s;
+}
+.botaoForm:hover{
+    color:white;
+    background-color: #606060;
+    
+    
+}
 dfn {
   font-style: italic;
 }
