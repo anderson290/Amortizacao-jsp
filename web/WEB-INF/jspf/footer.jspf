@@ -1,10 +1,14 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
+<footer class="footer text-center bg-light my-5 navbar-light pb-5">
+    <div class="col-4">
+        <ul class="navbar-nav mr-auto">
+              <h3>Integrantes</h3>
+              <li><a href="#" class="nav-link">Anderson do Carmo Nunes</a></li>
+              <li><a href="#" class="nav-link">Bruno de Lima</a></li>
+              <li><a href="#" class="nav-link">Nicole Medina</a></li>
 
-<a href="home..jsp">Inicio</a> ||
-<a href="amortizacao-americana.jsp">Amortizaçao americana</a> ||
-<a href="amorizacao-constante.jsp">Amortizaçao constante </a> ||
-<a href="Tabela Price.jsp">Tabela Price</a> ||
-
-
-<hr/>
+        </ul>
+    </div>    
+    
+</footer>
