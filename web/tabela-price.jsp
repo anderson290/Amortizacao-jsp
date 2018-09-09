@@ -4,6 +4,7 @@
     Author     : usuario
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,7 +40,15 @@
               double taxa = Double.parseDouble(request.getParameter("taxa"));
               
               taxa = taxa/100;
-              double n = Double.parseDouble(request.getParameter("periodos"));          
+              double n = Double.parseDouble(request.getParameter("periodos"));
+              DecimalFormat decimalFormat = new DecimalFormat();
+              decimalFormat.setMaximumFractionDigits(2);
+                    double totalP = 0.0;
+                    double totalPmt = 0.0;
+                    double totalJ = 0.0;
+                    double totalAmo=0.0;
+                    double pmt=0.0,juros=0.0,amotizacao=0.0,pvN=0.0;
+                    int counter = 0;
               %>
         <table class="table">
             <thead class="thead-light">
@@ -55,7 +64,8 @@
             </thead>            
             <tbody>
                 <%
-                    double pmt=0.0,juros=0.0,amotizacao=0.0,pvN=0.0;
+                    
+                    pmt = pv*(((Math.pow((1+taxa), n))*taxa)/(((Math.pow((1+taxa), n))-1)));
                     for(int i=0;i<=n;i++){
                         
                         if(i==0){%>
@@ -66,31 +76,43 @@
                     <td>0</td>
                     <td>0</td>
                    </tr>
-                <%
-                   
-                  }else{              
-                     
+                <% 
+                  }else{                             
                     juros = pv * taxa;
-                    pmt = pv*(((Math.pow((1+taxa), n))*taxa)/(((Math.pow((1+taxa), n))-1)));
-                  
-                    
                     amotizacao = pmt-juros;
                     pv = pv - amotizacao;
                     
-                    %>
-                  <tr>
-                  <td><%=i%></td>
-                  <td><%=pv%></td>
-                  <td><%=pmt%></td>
-                  <td><%=juros%></td>
-                  <td><%=amotizacao%></td>
-                  </tr>
-                  <%
-                 }
                 %>
-       
-        <%}
-        }%>
+                  <tr>
+                  <td><%=decimalFormat.format(i)%></td>                  
+                  <td><%=decimalFormat.format(pv)%></td>
+                  <td><%=decimalFormat.format(pmt)%></td>
+                  <td><%=decimalFormat.format(juros)%></td>
+                  <td><%=decimalFormat.format(amotizacao)%></td>
+                  </tr>
+                  
+                  <%
+                 }                   
+
+                   totalP=pv;
+                   totalP = totalP-pv;
+                   
+                   totalJ=totalJ+juros;
+                   totalAmo=totalAmo+amotizacao;
+                   counter = i;
+                   totalPmt=i*pmt;
+                }
+                
+         %>
+                    <tr>
+                      <td>Total</td> 
+                      <td><%=decimalFormat.format(totalP)%></td>
+                      <td><%=decimalFormat.format(totalPmt)%></td>
+                      <td><%=decimalFormat.format(totalJ)%></td>
+                      <td><%=decimalFormat.format(totalAmo)%></td>
+                    </tr>
+
+<% }       %>
             </tbody>
         </table>
         
