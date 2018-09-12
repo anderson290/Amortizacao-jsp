@@ -27,15 +27,15 @@
                     <form method="get">
                         <div class="form-group">
                             <label>Valor: </label>
-                            <input type="text" class="form-control" name="valor" placeholder="R$">
+                            <input type="text" class="form-control" name="valor" placeholder="R$" required>
                         </div>
                         <div class="form-group">
-                            <label>Juros (%): </label>
-                            <input type="text" class="form-control" name="juros">
+                            <label>Taxa (%): </label>
+                            <input type="text" class="form-control" name="juros" required>
                         </div>
                         <div class="form-group">
-                            <label>Tempo: </label>
-                            <input type="text" class="form-control" name="tempo" placeholder="Meses">
+                            <label>Período: </label>
+                            <input type="text" class="form-control" name="tempo" placeholder="Meses" required>
                         </div>
                         <input class="btn botaoForm mb-4" type="submit" value="Gerar" name="calcular"/>
                     </form>

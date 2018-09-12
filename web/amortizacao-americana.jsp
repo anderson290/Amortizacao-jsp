@@ -27,15 +27,15 @@
                     <form method="get" class="my-3">
                         <div class="form-group">
                             <label>Saldo Devedor: </label>
-                            <input type="text" class="form-control" name="valor" placeholder="R$">
+                            <input type="text" class="form-control" name="valor" placeholder="R$" required>
                         </div>
                         <div class="form-group">
-                            <label>Taxa de Juros (%): </label>
-                            <input type="text" class="form-control" name="juros">
+                            <label>Taxa (%): </label>
+                            <input type="text" class="form-control" name="juros" required>
                         </div>
                         <div class="form-group">
-                            <label>Tempo: </label>
-                            <input type="text" class="form-control" name="tempo" placeholder="Meses">
+                            <label>Período: </label>
+                            <input type="text" class="form-control" name="tempo" placeholder="Meses" required>
                         </div>
                         <center> <input class="btn botaoForm mb-4" type="submit" value="Gerar" name="calcular"/></center>
                     </form>
@@ -76,8 +76,8 @@
                                 <td><%= decimalFormat.format(saldoDevedor)%></td>
                                 <td>   <%= "  -- "%></td>
                                     <td> <% juros = saldoDevedor * tj;
-                                parcelas = juros;
-                                jurosA = jurosA + juros;%><%= decimalFormat.format(juros)%></td>
+                                        parcelas = juros;
+                                        jurosA = jurosA + juros;%><%= decimalFormat.format(juros)%></td>
                                 <td> <%parcA = parcA + parcelas;%><%= decimalFormat.format(parcelas)%></td>
 
                                 <% } else if (i == p) {%>
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </div>
-                       
+
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 

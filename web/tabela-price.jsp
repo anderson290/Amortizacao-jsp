@@ -26,17 +26,17 @@
                     <h2>Preencha o Formulário</h2>
                     <form method="GET">
                         <div class="form-group">
-                            <label for="pv">PV:</label>
-                            <input class="form-control" type="text" name="pv" required/>            
+                            <label for="pv">Saldo Devedor:</label>
+                            <input class="form-control" type="text" name="pv" placeholder="R$" required/>            
                         </div>
                         <div class="form-group">
-                            <label for="taxa">Taxa:</label>
+                            <label for="taxa">Taxa(%):</label>
                             <input class="form-control" type="text" name="taxa" required/>            
                         </div>
 
                         <div class="form-group">
-                            <label for="periodos">Períodos:</label>
-                            <input class="form-control" type="text" name="periodos" required/>
+                            <label for="periodos">Período:</label>
+                            <input class="form-control" type="text" name="periodos" placeholder="Meses" required/>
                         </div>
                         <input class="btn botaoForm mb-4" type="submit" value="Gerar"/>
 
